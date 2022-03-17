@@ -1,6 +1,6 @@
-#Vpply Video Components
+# Vpply Video Components
 
-##Latest Stable Versions
+## Latest Stable Versions
 Recorder: vpply_recorder_pv1.4.js
 Player: vpply_player_pv1.6.js
 Interview Recorder: vpply_interview_recorder_pv1.3
@@ -8,7 +8,7 @@ Interview_Player: vpply_interview_player_pv1.3
 
 
 
-##Recorder: vpply_recorder_pv1.4.js
+## Recorder: vpply_recorder_pv1.4.js
 The recorder component records 60 second videos using the front facing camera on the users device. */
 
 place an element inside your HTML code with an id of vpply-video-element
@@ -42,7 +42,7 @@ recorder.destory()
 ```
 
 
-##Player: vpply_player_pv1.6.js
+## Player: vpply_player_pv1.6.js
 The player component will return a video element with the video loaded using the vpply_id returned from the recorder components. 
 
 place an element inside your HTML code with an id of vpply-video-element
@@ -62,7 +62,7 @@ to close the player call the destroy function
 player.destroy()
 ```
 
-##Interview Recorder: vpply_interview_recorder_pv1.3.js
+## Interview Recorder: vpply_interview_recorder_pv1.3.js
 The interview recorder component records multiple videos as responses to questions at a set response length in seconds. */
 
 To start using the recorder, request a client_key using your secret key, making a get request to the vpply server. 
@@ -113,7 +113,7 @@ to close the interview_recorder call the destroy function
  interview_recorder.destroy()
 ```
 
-##Interview Player: vpply_interview_player_pv1.3.js
+## Interview Player: vpply_interview_player_pv1.3.js
 The interview player component plays back a jobseekers video interview. 
 
 place an element inside your HTML code with an id of vpply-interview-player
