@@ -17,7 +17,7 @@ The recorder component records 60 second videos using the front facing camera on
 place an element inside your HTML code with an id of vpply-video-element
 
 ```
-<div id="vpply-video-player"></div>
+<div id="vpply-video-element"></div>
 ```
 
 To use the script load the recorder module and configure the recorder using your primary key: 
@@ -50,7 +50,7 @@ The player component will return a video element with the video loaded using the
 
 place an element inside your HTML code with an id of vpply-video-element
 ```
-<div id="vpply-video-player"></div>
+<div id="vpply-video-element"></div>
 ```
 
 To use the script load the player module and configure it using your primary key and video id
