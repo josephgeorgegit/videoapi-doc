@@ -53,7 +53,7 @@ place an element inside your HTML code with an id of vpply-video-element
 <div id="vpply-video-element"></div>
 ```
 
-To use the script load the player module and configure it using your primary key and video id
+To use the script load the player module and configure it using your primary key and video id.
 video id is the value returned from the video recorder as a reference to a video
 ```
 import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_player_pv1.6.min.js'
