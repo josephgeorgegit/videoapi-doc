@@ -12,7 +12,7 @@ Interview_Player: vpply_interview_player_pv1.3
 
 
 ## Recorder: vpply_recorder_pv1.4.js
-The recorder component records 60 second videos using the front facing camera on the users device. */
+The recorder component records 60 second videos using the front facing camera on the users device.
 
 place an element inside your HTML code with an id of vpply-video-element
 
