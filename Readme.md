@@ -2,8 +2,11 @@
 
 ## Latest Stable Versions
 Recorder: vpply_recorder_pv1.4.js
+
 Player: vpply_player_pv1.6.js
+
 Interview Recorder: vpply_interview_recorder_pv1.3
+
 Interview_Player: vpply_interview_player_pv1.3
 
 
