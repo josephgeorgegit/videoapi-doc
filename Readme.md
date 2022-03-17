@@ -38,7 +38,7 @@ document.getElementById('vpply-video-element').addEventListener('videouploaded',
 })
 ```
 
-use recorder  recorders destroy function to unload the video recorder.
+use recorders destroy function to unmount the video recorder.
 
 ```
 recorder.destory()
