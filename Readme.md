@@ -9,7 +9,9 @@ Interview Recorder: vpply_interview_recorder_pv1.3
 
 Interview_Player: vpply_interview_player_pv1.3
 
+For staging use the script as sv_1.x
 
+e.g https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_recorder_sv1.4.min.js
 
 ## Recorder: vpply_recorder_pv1.4.js
 The recorder component records 60 second videos using the front facing camera on the users device.
