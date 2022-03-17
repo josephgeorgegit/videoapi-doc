@@ -60,7 +60,7 @@ import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js
 
 player.configure(primary_key, vpply_id)
  ```
-to close the player call the destroy function
+to unmount the player call the destroy function
 ```
 player.destroy()
 ```
