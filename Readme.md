@@ -5,7 +5,7 @@ Recorder: vpply_recorder_pv1.4.js
 
 Player: vpply_player_pv1.6.js
 
-Interview Recorder: vpply_interview_recorder_pv1.3
+Interview Recorder: vpply_interview_recorder_pv1.5
 
 Interview_Player: vpply_interview_player_pv1.3
 
@@ -67,7 +67,7 @@ to unmount the player call the destroy function
 player.destroy()
 ```
 
-## Interview Recorder: vpply_interview_recorder_pv1.3.js
+## Interview Recorder: vpply_interview_recorder_pv1.5.js
 The interview recorder component records multiple videos as responses to questions at a set response length in seconds. */
 
 To start using the recorder, request a client_key using your secret key, making a get request to the vpply server. 
@@ -86,7 +86,7 @@ call the interview recorders configure function using a client key to use as ref
 Import the interview recorder module and pass in a new client key and questions array in the order the questions are set on the 
 job posting to the interview recorders configure function.
 ```
-import * as interview_recorder from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_recorder_pv1.3.min.js'
+import * as interview_recorder from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_recorder_pv1.5.min.js'
 
 questions = [
     {
