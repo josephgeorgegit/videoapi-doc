@@ -132,7 +132,10 @@ questions is an array of strings. Pass the questions in the same order they were
 ```
 import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_player_pv1.3.min.js'
 
-questions = ['string', 'string']
+questions = [
+    {question: 'string'}, 
+    {question: 'string'}
+]
 
 player.configure(primary_key, interview_id, questions)
  ```
