@@ -1,145 +1,125 @@
-# Vpply Video Components
+# Vpply Recorder Docs
+---
 
-## Latest Stable Versions
-Recorder: vpply_recorder_pv1.4.js
+## How to integrate - Profile Videos
 
-Player: vpply_player_pv1.6.js
+For Recording a profile, we configure the player to record and upload only 1 video. The response received is the video id
 
-Interview Recorder: vpply_interview_recorder_pv1.5
+First, in your HTML, add a div element with the id of ‘vpply-recorder-element’
 
-Interview_Player: vpply_interview_player_pv1.3
+`<div id="vpply-recorder-element"></div>`
 
-For staging use the script as sv_1.x
+Next import the script to handle the video recording in the body of the page running the recorder. Make sure the script tag has the type="module attribute"
 
-e.g https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_recorder_sv1.4.min.js
+`<script src=<location of your script> type="module"`
 
-## Recorder: vpply_recorder_pv1.4.js
-The recorder component records 60 second videos using the front facing camera on the users device.
+Import the module
 
-place an element inside your HTML code with an id of vpply-video-element
+`import * as recorder from <url of script>`
 
-```
-<div id="vpply-video-element"></div>
-```
+Next, configure the parameters of the recorder. You will need
 
-To use the script load the recorder module and configure the recorder using your primary key: 
+`primary_key:string = <your primary key>`
 
-```
-import * as recorder from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_recorder_pv1.4.min.js'
+`Recorder_config = [
+    {
+        allow_upload: true, 
+        max_length: 60
+    }
+]`
 
-recorder.configure(primary_key)
-```
-Add an event listener on the component to wait for the user to submit a video.
-the returned result inside event.detail is the vpply_id to reference the video to watch later.
+`const type:string = 'profile'`
 
-```
-document.getElementById('vpply-video-element').addEventListener('videouploaded', (event) => {
-    //string
-    video_id = event.detail
-    
-})
-```
+`const brand_color:string =  <your brands hex code>`
 
-use recorders destroy function to unmount the video recorder.
+`font_family: string = <your brand font family>`
 
-```
-recorder.destory()
-```
+Next mount the recorder by calling the ‘mount’ function, passing in the parameters
 
+`recorder.mount(
+	primary_key,
+    recorder_config,
+    type,
+    brand_color,
+    font_family
+)`
 
-## Player: vpply_player_pv1.6.js
-The player component will return a video element with the video loaded using the vpply_id returned from the recorder components. 
+Once the recording is complete, listen for the ‘interviewcomplete’ event 
 
-place an element inside your HTML code with an id of vpply-video-element
-```
-<div id="vpply-video-element"></div>
-```
+`document.getElementById('vpply-recorder-element').addEventListener('interviewcomplete', (res) => {
+    let video_id = res.detail
+})`
 
-To use the script load the player module and configure it using your primary key and video id.
-video id is the value returned from the video recorder as a reference to a video
-```
-import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_player_pv1.6.min.js'
+When recording is complete the element will unmount itself.
 
-player.configure(primary_key, vpply_id)
- ```
-to unmount the player call the destroy function
-```
-player.destroy()
-```
+If you would like to unmount the element before a video is uploaded, you can call the unmount() function
 
-## Interview Recorder: vpply_interview_recorder_pv1.5.js
-The interview recorder component records multiple videos as responses to questions at a set response length in seconds. */
+`recorder.unmount()`
 
-To start using the recorder, request a client_key using your secret key, making a get request to the vpply server. 
-```
-'GET' : 'https://videoapi.vpply.com/api/createckey'
+---
 
-//Set Request Headers //
+## How to integrate - Interviews
+
+For Recording a profile, we configure the player to record and upload only 1 video. The response received is the video id
+
+First, in your HTML, add a div element with the id of ‘vpply-recorder-element’
+
+`<div id="vpply-recorder-element"></div>`
+
+Next import the script to handle the video recording in the body of the page running the recorder. Make sure the script tag has the type="module attribute"
+
+`<script src=<location of your script> type="module"`
+
+Next, we need to get a client key for every indivdual interview recording. To get a client key, make a http get request to the Vpply API
+
+`'GET' : 'https://videoapi.vpply.com/api/createckey'`
+
+`//Set Request Headers //
  {
-     header:    vpply_skey,
+     header:    vpply-skey,
      value :    your secret key
- }
-```
-call the interview recorders configure function using a client key to use as reference to the bundle of videos the user saves.
+ }`
 
+Import the module
 
-Import the interview recorder module and pass in a new client key and questions array in the order the questions are set on the 
-job posting to the interview recorders configure function.
-```
-import * as interview_recorder from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_recorder_pv1.5.min.js'
+`import * as recorder from <url of script>`
 
-questions = [
+Next, configure the parameters of the recorder. You will need
+
+`client_key:string = <generated client key>`
+
+`recorder_config = [
     {
-        question: String, 
-        response_time: Number
-    },
-    {
-        question: String, 
-        response_time: Number
-    },
-]
+        allow_upload: true, 
+        max_length: 60,
+        text_prompt: "this is a sample question"
+    }
+]`
 
-interview_recorder.configure(client_key, questions)
-```
+`const type:string = 'interview'`
 
-Add an event listener on the component to wait for the user to submit a video.
-the returned result inside event.detail is the interview_id to reference the interview to 
-view all answers at once inside the interview player.
-```
- document.getElementById('vpply-interview-element').addEventListener('interviewcomplete', (event) => {
-    
-    //string
-    interview_id = event.detail
-    
-})
-```
-to close the interview_recorder call the destroy function
-```
- interview_recorder.destroy()
-```
+`const brand_color:string =  <your brands hex code>`
 
-## Interview Player: vpply_interview_player_pv1.3.js
-The interview player component plays back a jobseekers video interview. 
+`font_family: string = <your brand font family>`
 
-place an element inside your HTML code with an id of vpply-interview-player
-```
-<div id="vpply-interview-player"></div>
-```
-call the interview players configure function using your primary key, interview id and questions 
+Next mount the recorder by calling the ‘mount’ function, passing in the parameters
 
-Interview_id is the returned value of the interview recorder as a reference to a bundle of videos.
-questions is an array of strings. Pass the questions in the same order they were answered in the interview_recorder.
-```
-import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_player_pv1.3.min.js'
+`recorder.mount(
+	client_key,
+    recorder_config,
+    type,
+    brand_color,
+    font_family
+)`
 
-questions = [
-    {question: 'string'}, 
-    {question: 'string'}
-]
+Once the recording is complete, listen for the ‘interviewcomplete’ event 
 
-player.configure(primary_key, interview_id, questions)
- ```
-to close the player call the destroy function
-```
-player.destroy()
-```
+`document.getElementById('vpply-recorder-element').addEventListener('interviewcomplete', (res) => {
+    let interview_id = res.detail
+})`
+
+When recording is complete the element will unmount itself.
+
+If you would like to unmount the element before a video is uploaded, you can call the unmount() function
+
+`recorder.unmount()`
