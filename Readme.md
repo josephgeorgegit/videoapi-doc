@@ -123,3 +123,41 @@ When recording is complete the element will unmount itself.
 If you would like to unmount the element before a video is uploaded, you can call the unmount() function
 
 `recorder.unmount()`
+
+Player: vpply_player_pv1.6.js
+The player component will return a video element with the video loaded using the vpply_id returned from the recorder components.
+
+place an element inside your HTML code with an id of vpply-video-element
+
+<div id="vpply-video-element"></div>
+To use the script load the player module and configure it using your primary key and video id. video id is the value returned from the video recorder as a reference to a video
+
+import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_player_pv1.6.min.js'
+
+player.configure(primary_key, vpply_id)
+to unmount the player call the destroy function
+
+player.destroy()
+
+
+Interview Player: vpply_interview_player_pv1.3.js
+The interview player component plays back a jobseekers video interview.
+
+place an element inside your HTML code with an id of vpply-interview-player
+
+<div id="vpply-interview-player"></div>
+call the interview players configure function using your primary key, interview id and questions
+
+Interview_id is the returned value of the interview recorder as a reference to a bundle of videos. questions is an array of strings. Pass the questions in the same order they were answered in the interview_recorder.
+
+import * as player from 'https://vpply-assets.s3.ap-southeast-2.amazonaws.com/js/vpply_interview_player_pv1.3.min.js'
+
+questions = [
+    {question: 'string'}, 
+    {question: 'string'}
+]
+
+player.configure(primary_key, interview_id, questions)
+to close the player call the destroy function
+
+player.destroy()
