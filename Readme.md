@@ -11,7 +11,7 @@ First, in your HTML, add a div element with the id of â€˜vpply-recorder-elementâ
 
 Next import the script to handle the video recording in the body of the page running the recorder. Make sure the script tag has the type="module attribute"
 
-`<script src=<location of your script> type="module"`
+`<script src="recorder.js" type="module"></script>`
 
 Import the module
 
@@ -68,7 +68,7 @@ First, in your HTML, add a div element with the id of â€˜vpply-recorder-elementâ
 
 Next import the script to handle the video recording in the body of the page running the recorder. Make sure the script tag has the type="module attribute"
 
-`<script src=<location of your script> type="module"`
+`<script src="recorder.js" type="module"></script>`
 
 Next, we need to get a client key for every indivdual interview recording. To get a client key, make a http get request to the Vpply API
 
@@ -146,6 +146,7 @@ The interview player component plays back a jobseekers video interview.
 place an element inside your HTML code with an id of vpply-interview-player
 
 `<div id="vpply-interview-player"></div>`
+
 call the interview players configure function using your primary key, interview id and questions
 
 Interview_id is the returned value of the interview recorder as a reference to a bundle of videos. questions is an array of strings. Pass the questions in the same order they were answered in the interview_recorder.
@@ -158,6 +159,7 @@ Interview_id is the returned value of the interview recorder as a reference to a
 ]`
 
 player.configure(primary_key, interview_id, questions)
+
 to close the player call the destroy function
 
 `player.destroy()`
