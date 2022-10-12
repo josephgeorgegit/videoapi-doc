@@ -88,13 +88,21 @@ Next, configure the parameters of the recorder. You will need
 
 `client_key:string = <generated client key>`
 
+You can have as many questions here as you like structured like the objects in the array below
 `recorder_config = [
+    {
+        allow_upload: true, 
+        max_length: 60,
+        text_prompt: "this is a sample question"
+    },
     {
         allow_upload: true, 
         max_length: 60,
         text_prompt: "this is a sample question"
     }
 ]`
+
+
 
 `const type:string = 'interview'`
 
