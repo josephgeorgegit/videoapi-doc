@@ -93,12 +93,12 @@ You can have as many questions here as you like structured like the objects in t
     {
         allow_upload: true, 
         max_length: 60,
-        text_prompt: "this is a sample question"
+        text_prompt: "this is a sample question 1"
     },
     {
         allow_upload: true, 
         max_length: 60,
-        text_prompt: "this is a sample question"
+        text_prompt: "this is a sample question 2"
     }
 ]`
 
